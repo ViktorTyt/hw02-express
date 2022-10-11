@@ -1,6 +1,8 @@
 const { Schema, model } = require("mongoose");
 const Joi = require("joi");
 
+const { handleSaveErrors } = require("../helpers");
+
 const userSchema = new Schema(
   {
     name: {
@@ -22,9 +24,12 @@ const userSchema = new Schema(
       default: "starter",
     },
     token: String,
+    default: "",
   },
   { versionKey: false, timestamps: true }
 );
+
+userSchema.post("save", handleSaveErrors);
 
 const registerSchema = Joi.object({
   name: Joi.string().required(),
