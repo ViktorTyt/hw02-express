@@ -6,7 +6,6 @@ const { User } = require("../../models/user");
 const { RequestError } = require("../../helpers");
 
 const { SECRET_KEY } = process.env;
-console.log(SECRET_KEY);
 
 const login = async (req, res) => {
   const { email, password } = req.body;

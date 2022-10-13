@@ -35,6 +35,7 @@ const registerSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().required(),
   password: Joi.string().required(),
+  subscription: Joi.string(),
 });
 
 const loginSchema = Joi.object({
@@ -42,9 +43,16 @@ const loginSchema = Joi.object({
   password: Joi.string().required(),
 });
 
+const updateStatusSchema = Joi.object({
+  subscription: Joi.string().messages({
+    "any.required": "missing required subscription field",
+  }),
+});
+
 const schemas = {
   registerSchema,
   loginSchema,
+  updateStatusSchema,
 };
 
 const User = model("user", userSchema);
