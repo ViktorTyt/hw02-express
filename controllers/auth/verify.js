@@ -11,7 +11,9 @@ const verify = async (req, res) => {
     verify: true,
     verificationToken: null,
   });
-  res.json("Verification successful");
+  res.json({
+    message: "Verification successful",
+  });
 };
 
 module.exports = verify;
